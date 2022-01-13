@@ -9,11 +9,30 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    var isFirst = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        imageView.isUserInteractionEnabled = true
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changePicture))
+        imageView.addGestureRecognizer(gestureRecognizer)
     }
-
+    
+        @objc func changePicture (){
+            if isFirst {
+                imageView.image = UIImage(named: "firstapp2")
+                            nameLabel.text = "second image"
+                isFirst = false
+            } else{
+                imageView.image = UIImage(named: "firstapp1")
+                            nameLabel.text = "first image"
+                isFirst = true
+            }
+            
+        }
 
 }
 
